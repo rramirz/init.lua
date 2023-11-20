@@ -12,11 +12,24 @@ return require('packer').startup(function(use)
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
     use("nvim-treesitter/nvim-treesitter-context");
-
+    use("lewis6991/gitsigns.nvim")
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
+      require("toggleterm").setup()
     end}
 
+    use {
+        'gelguy/wilder.nvim',
+        config = function()
+        end
+    }
+    
+    use {
+        'folke/noice.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'MunifTanjim/nui.nvim'
+        },
+    }
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -54,6 +67,12 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme catppuccin-mocha')
         end
     })
+    
+    use {'akinsho/git-conflict.nvim', tag = "*", config = function()
+        require('git-conflict').setup()
+    end}
+    
+    use "sindrets/diffview.nvim"
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',

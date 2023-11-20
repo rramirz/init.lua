@@ -1,4 +1,5 @@
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua lazygit_toggle()<CR>", {noremap = true, silent = true})
 
 local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("ThePrimeagen_Fugitive", {})
 

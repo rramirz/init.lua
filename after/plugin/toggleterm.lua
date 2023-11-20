@@ -13,21 +13,22 @@ require("toggleterm").setup{
   start_in_insert = true,
   insert_mappings = true,
   terminal_mappings = true,
-  direction = 'vertical',
+  direction = 'float',
   close_on_exit = true,
   shell = vim.o.shell,
 }
 
-function _lazygit_toggle()
-  local Terminal = require("toggleterm.terminal").Terminal
-  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local k9s = Terminal:new({ cmd = "k9s", hidden = true })
 
-  return function()
-    lazygit:toggle()
-  end
+function _lazygit_toggle()
+  lazygit:toggle()
 end
 
-local lazygit_toggle = _lazygit_toggle()
+function _k9s_toggle()
+  k9s:toggle()
+end
 
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua lazygit_toggle()<CR>", {noremap = true, silent = true})
-
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>k", "<cmd>lua _k9s_toggle()<CR>", {noremap = true, silent = true})
