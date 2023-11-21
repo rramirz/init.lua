@@ -18,6 +18,11 @@ return require('packer').startup(function(use)
     end}
 
     use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+
+    use {
         'gelguy/wilder.nvim',
         config = function()
         end
@@ -72,8 +77,6 @@ return require('packer').startup(function(use)
         require('git-conflict').setup()
     end}
     
-    use "sindrets/diffview.nvim"
-
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
         -- or                            , branch = '0.1.x',
