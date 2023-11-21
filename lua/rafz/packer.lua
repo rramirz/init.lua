@@ -27,7 +27,12 @@ return require('packer').startup(function(use)
         config = function()
         end
     }
-    
+
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+    }
+
     use {
         'folke/noice.nvim',
         requires = {
