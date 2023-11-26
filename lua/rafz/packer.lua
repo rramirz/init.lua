@@ -13,6 +13,23 @@ return require('packer').startup(function(use)
     use("tpope/vim-fugitive")
     use("nvim-treesitter/nvim-treesitter-context");
     use("lewis6991/gitsigns.nvim")
+
+    use {
+        "hrsh7th/nvim-cmp",
+        requires = {
+            "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
+            'quangnguyen30192/cmp-nvim-ultisnips', 'hrsh7th/cmp-nvim-lua',
+            'octaltree/cmp-look', 'hrsh7th/cmp-path', 'hrsh7th/cmp-calc',
+            'f3fora/cmp-spell', 'hrsh7th/cmp-emoji'
+        }
+    }
+    
+    use {
+        'tzachar/cmp-tabnine',
+        run = './install.sh',
+        requires = 'hrsh7th/nvim-cmp'
+    }
+
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
       require("toggleterm").setup()
     end}
@@ -64,6 +81,13 @@ return require('packer').startup(function(use)
     }
 
     use("github/copilot.vim")
+
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 
     use {
         'nvim-treesitter/nvim-treesitter',
