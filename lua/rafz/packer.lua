@@ -74,20 +74,13 @@ return require('packer').startup(function(use)
     }
 
     use("github/copilot.vim")
-
+    use { "catppuccin/nvim", as = "catppuccin" }
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
-        end,}
-
-        use ({ "catppuccin/nvim", as = "catppuccin",
-        config = function()
-            vim.cmd('colorscheme catppuccin-mocha')
-        end
-    })
-    
+        end,}    
     use {'akinsho/git-conflict.nvim', tag = "*", config = function()
         require('git-conflict').setup()
     end}
