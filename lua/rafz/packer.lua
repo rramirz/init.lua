@@ -11,9 +11,17 @@ return require('packer').startup(function(use)
     use("theprimeagen/refactoring.nvim")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
+    use("f-person/git-blame.nvim")
     use 'nvim-tree/nvim-web-devicons'
     use("nvim-treesitter/nvim-treesitter-context");
     use("lewis6991/gitsigns.nvim")
+    use("lukas-reineke/indent-blankline.nvim")
+
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
       require("toggleterm").setup()
     end}
@@ -83,7 +91,7 @@ return require('packer').startup(function(use)
     }
 
     use("github/copilot.vim")
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use("folke/tokyonight.nvim")
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()

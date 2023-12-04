@@ -1,13 +1,16 @@
-require("catppuccin").setup({
-    disable_background = true
+require("tokyonight").setup({
+  -- use the night style
+  style = "storm",
+  -- disable italic for functions
+  styles = {
+    functions = {}
+  },
+  sidebars = { "qf", "vista_kind", "terminal", "packer" },
+  -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+  on_colors = function(colors)
+    colors.hint = colors.orange
+    colors.error = "#ff0000"
+  end
 })
 
-function ColorMyPencils(color)
-	color = color or "catppuccin-mocha"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
-ColorMyPencils()
+vim.cmd[[colorscheme tokyonight]]

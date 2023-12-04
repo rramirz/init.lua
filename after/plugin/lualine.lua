@@ -1,3 +1,10 @@
+local function getCurrentK8sContext()
+    local handle = io.popen("kubectl config current-context")
+    local result = handle:read("*a")
+    handle:close()
+    return result:gsub("%s+", "") -- Remove any trailing whitespace
+end
+
 require('lualine').setup{
   options = {
     icons_enabled = true,
@@ -18,9 +25,9 @@ require('lualine').setup{
     }
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = { 'mode' },
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_c = {'filename', getCurrentK8sContext },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
