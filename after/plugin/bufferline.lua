@@ -7,7 +7,7 @@ require("bufferline").setup{
     middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
     -- Add custom indicators
     indicator_icon = '▎',
-    buffer_close_icon = '',
+    buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
     left_trunc_marker = '',
@@ -35,7 +35,6 @@ require("bufferline").setup{
     enforce_regular_tabs = false,
     always_show_bufferline = true,
     sort_by = 'id' -- 'id' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
-    -- can also be a custom function
   },
 }
 
