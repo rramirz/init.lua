@@ -5,6 +5,13 @@ local function getCurrentK8sContext()
     return result:gsub("%s+", "") -- Remove any trailing whitespace
 end
 
+local function getK8sNs()
+    local handle = io.popen("kubectl config view --minify --output 'jsonpath={..namespace}'")
+    local result = handle:read("*a")
+    handle:close()
+    return result:gsub("%s+", "") -- Remove any trailing whitespace
+end
+
 require('lualine').setup{
   options = {
     icons_enabled = true,
@@ -27,7 +34,7 @@ require('lualine').setup{
   sections = {
     lualine_a = { 'mode' },
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename', getCurrentK8sContext },
+    lualine_c = {'filename', getCurrentK8sContext, getK8sNs },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
