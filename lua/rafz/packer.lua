@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
   use("nvim-treesitter/nvim-treesitter-context");
   use("lewis6991/gitsigns.nvim")
   use("lukas-reineke/indent-blankline.nvim")
-
+  use("towolf/vim-helm")
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end

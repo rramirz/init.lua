@@ -39,6 +39,16 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
+  if vim.api.nvim_buf_get_option(bufnr, 'filetype') == 'helm' and client.name == 'yamlls' then
+    -- Prevent yamlls from attaching to helm filetype
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+    client.resolved_capabilities.document_symbol = false
+    client.resolved_capabilities.hover = false
+    client.resolved_capabilities.completion = false
+    return
+  end
+
   local opts = {buffer = bufnr, remap = false}
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
