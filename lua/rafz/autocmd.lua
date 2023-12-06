@@ -15,7 +15,7 @@ local function refresh_neotree()
 end
 
 vim.api.nvim_create_augroup("NeoTreeBufferSwitchRefresh", { clear = true })
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd("BufLeave", {
     pattern = "*",
     callback = refresh_neotree,
     group = "NeoTreeBufferSwitchRefresh",
