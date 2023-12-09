@@ -17,6 +17,24 @@ return require('packer').startup(function(use)
   use("lewis6991/gitsigns.nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use("towolf/vim-helm")
+
+  use {
+    'KadoBOT/nvim-spotify',
+    requires = 'nvim-telescope/telescope.nvim',
+    config = function()
+      local spotify = require'nvim-spotify'
+
+      spotify.setup {
+        -- default opts
+        status = {
+          update_interval = 10000, -- the interval (ms) to check for what's currently playing
+          format = '%s %t by %a' -- spotify-tui --format argument
+        }
+      }
+    end,
+    run = 'make'
+  }
+
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
