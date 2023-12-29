@@ -21,10 +21,3 @@ vim.api.nvim_create_autocmd("BufLeave", {
     group = "NeoTreeBufferSwitchRefresh",
 })
 
-vim.api.nvim_create_augroup("LspAutoRestart", { clear = true })
-vim.api.nvim_create_autocmd("BufWinEnter", {
-    pattern = "*",
-    command = "LspRestart",
-    group = "LspAutoRestart",
-})
-

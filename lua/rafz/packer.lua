@@ -17,32 +17,30 @@ return require('packer').startup(function(use)
   use("lewis6991/gitsigns.nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use("towolf/vim-helm")
+  use { 'neoclide/coc.nvim', branch = 'release' }
+  use { 'williamboman/mason.nvim' }
+  use { 'neovim/nvim-lspconfig' }
 
   use {
     'KadoBOT/nvim-spotify',
     requires = 'nvim-telescope/telescope.nvim',
     config = function()
-      local spotify = require'nvim-spotify'
+      local spotify = require 'nvim-spotify'
 
       spotify.setup {
         -- default opts
         status = {
           update_interval = 10000, -- the interval (ms) to check for what's currently playing
-          format = '%s %t by %a' -- spotify-tui --format argument
+          format = '%s %t by %a'   -- spotify-tui --format argument
         }
       }
     end,
     run = 'make'
   }
 
-  use {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
-  }
-
-  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()
-  end}
+  end }
 
   use {
     'akinsho/bufferline.nvim',
@@ -63,7 +61,7 @@ return require('packer').startup(function(use)
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
@@ -85,28 +83,28 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
-    requires = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
-
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-path'},
-      {'saadparwaiz1/cmp_luasnip'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-nvim-lua'},
-
-      -- Snippets
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
-    }
-  }
+  -- use {
+  --   'VonHeikemen/lsp-zero.nvim',
+  --   branch = 'v1.x',
+  --   requires = {
+  --     -- LSP Support
+  --     {'neovim/nvim-lspconfig'},
+  --     {'williamboman/mason.nvim'},
+  --     {'williamboman/mason-lspconfig.nvim'},
+  --
+  --     -- Autocompletion
+  --     {'hrsh7th/nvim-cmp'},
+  --     {'hrsh7th/cmp-buffer'},
+  --     {'hrsh7th/cmp-path'},
+  --     {'saadparwaiz1/cmp_luasnip'},
+  --     {'hrsh7th/cmp-nvim-lsp'},
+  --     {'hrsh7th/cmp-nvim-lua'},
+  --
+  --     -- Snippets
+  --     {'L3MON4D3/LuaSnip'},
+  --     {'rafamadriz/friendly-snippets'},
+  --   }
+  -- }
 
   use("github/copilot.vim")
   use("folke/tokyonight.nvim")
@@ -115,14 +113,14 @@ return require('packer').startup(function(use)
     run = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
-    end,}    
-    use {'akinsho/git-conflict.nvim', tag = "*", config = function()
-      require('git-conflict').setup()
-    end}
+    end, }
+  use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
+    require('git-conflict').setup()
+  end }
 
-    use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.4',
-      -- or                            , branch = '0.1.x',
-      requires = { {'nvim-lua/plenary.nvim'} }
-    }
-  end)
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    -- or                            , branch = '0.1.x',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
+end)
