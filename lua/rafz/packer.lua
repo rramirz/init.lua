@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
   use { 'neoclide/coc.nvim', branch = 'release' }
   use { 'williamboman/mason.nvim' }
   use { 'neovim/nvim-lspconfig' }
+  use { 'nvim-pack/nvim-spectre' }
 
   use {
     'KadoBOT/nvim-spotify',
