@@ -17,6 +17,7 @@ return require('packer').startup(function(use)
   use("lewis6991/gitsigns.nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use("towolf/vim-helm")
+  use("rcarriga/nvim-notify")
   use { 'neoclide/coc.nvim', branch = 'release' }
   use { 'williamboman/mason.nvim' }
   use { 'neovim/nvim-lspconfig' }
