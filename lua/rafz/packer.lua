@@ -24,6 +24,10 @@ return require('packer').startup(function(use)
   use { 'nvim-pack/nvim-spectre' }
 
   use {
+    'folke/trouble.nvim',
+    requires = 'nvim-tree/nvim-web-devicons',
+  }
+  use {
     'KadoBOT/nvim-spotify',
     requires = 'nvim-telescope/telescope.nvim',
     config = function()
