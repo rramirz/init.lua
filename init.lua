@@ -1,1 +1,1 @@
-require("rafz")
+require("rafz-lazy")

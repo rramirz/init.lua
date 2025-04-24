@@ -22,26 +22,11 @@ return require('packer').startup(function(use)
   use { 'williamboman/mason.nvim' }
   use { 'neovim/nvim-lspconfig' }
   use { 'nvim-pack/nvim-spectre' }
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
   use {
     'folke/trouble.nvim',
     requires = 'nvim-tree/nvim-web-devicons',
-  }
-  use {
-    'KadoBOT/nvim-spotify',
-    requires = 'nvim-telescope/telescope.nvim',
-    config = function()
-      local spotify = require 'nvim-spotify'
-
-      spotify.setup {
-        -- default opts
-        status = {
-          update_interval = 10000, -- the interval (ms) to check for what's currently playing
-          format = '%s %t by %a'   -- spotify-tui --format argument
-        }
-      }
-    end,
-    run = 'make'
   }
 
   use { "akinsho/toggleterm.nvim", tag = '*', config = function()
